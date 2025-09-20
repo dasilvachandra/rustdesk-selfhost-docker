@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  hbbs:
+    image: rustdesk/rustdesk-server:latest
+    container_name: hbbs
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./data:/root
+    command: hbbs -r $(SERVER_IP):21117
+
+  hbbr:
+    image: rustdesk/rustdesk-server:latest
+    container_name: hbbr
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./data:/root
+    command: hbbr
